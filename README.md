@@ -8,3 +8,10 @@ AutoConnectAP
 Mật khẩu:
 password
 ```
+---
+# Tài khoản blynk
+> https://blynk.cloud/
+ ```
+ Username: quycoverdata@gmail.com
+ Password: nongcong1
+```
