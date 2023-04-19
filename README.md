@@ -1,2 +1,10 @@
-# Thiết lập nhiệt độ, độ ẩm kích relay:
-> max_nhietdo
+# Thiết lập nhiệt độ, khí gas kích relay:
+> max_nhietdo , max_khigas
+
+# Chế độ phát wifi:
+```
+Tên wifi:
+AutoConnectAP
+Mật khẩu:
+password
+```
