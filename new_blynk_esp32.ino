@@ -34,7 +34,7 @@ int totalRows = 2;
 
 LiquidCrystal_I2C lcd(0x27, totalColumns, totalRows);
 
-const unsigned long watchdogTimeout = 60000; // Thời gian chờ của watchdog (60 giây)
+const unsigned long watchdogTimeout = 30000; // Thời gian chờ của watchdog (30 giây)
 unsigned long lastWatchdogReset = 0;
 
 hw_timer_t * watchdogTimer = NULL;
@@ -185,12 +185,12 @@ float t = dht.readTemperature();
 
 }
 void setup() {
-
+/*
   watchdogTimer = timerBegin(0, 80, true); // Timer 0, prescaler 80 (1MHz)
   timerAttachInterrupt(watchdogTimer, & resetModule, true);
   timerAlarmWrite(watchdogTimer, watchdogTimeout * 1000, false); // Chuyển sang microgiây
   timerAlarmEnable(watchdogTimer);
-
+*/
   pinMode(congtac1, OUTPUT);
   pinMode(congtac2, OUTPUT);
   pinMode(congtac3, OUTPUT);
@@ -203,11 +203,16 @@ void setup() {
 
   // Debug console
   Serial.begin(115200);
+ lcd.clear();
+    lcd.setCursor(0, 0); // Đặt vị trí con trỏ của màn hình LCD tại hàng 0, cột 0
 
+    lcd.print("KET NOI BLYNK...");
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
   //timer.setInterval(5*60*1000, connectionstatus);  // check every 5 minutes
-  timer.setInterval(1000 L, sendSensor);
-  timer.setInterval(1000 L, AnalogPinRead); // Run sensor scan 4 times a second
+  timer.setInterval(1000L, sendSensor);
+  timer.setInterval(1000L, AnalogPinRead); // Run sensor scan 4 times a second
+      delay(1000);
+
 }
 void AnalogPinRead() {
   int sensorValue = analogRead(analogPin); // Read the analog in value:
