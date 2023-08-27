@@ -47,7 +47,7 @@ DHTesp dht;
 const int analogPin = 36; // Analog input pin 0 (GPIO 36)
 int max_khigas = 2000;
 int max_nhietdo = 30;
-
+int min_nhietdo = 30;
 byte degree[8] = {
   0B01110,
   0B01010,
@@ -149,6 +149,12 @@ float t = dht.readTemperature();
       digitalWrite(congtac1, 1);
     } else {
       digitalWrite(congtac1, 0);
+    }
+
+    if (t > min_nhietdo) {
+      digitalWrite(congtac2, 1);
+    } else {
+      digitalWrite(congtac2, 0);
     }
 
     lcd.clear();
